@@ -14277,19 +14277,30 @@ a.anchor-link {
 <li>H0 = μi ≤ μc (μi - population mean of incongruent values, μc - population mean of congruent values)</li>
 <li>H1 = μi &gt; μc (μi - population mean of incongruent values, μc - population mean of congruent values)</li>
 </ul>
-<h3 id="Statistical-Test">Statistical Test<a class="anchor-link" href="#Statistical-Test">&#182;</a></h3><p>A t-score was calculated to test my alternate hypothesis against the null hypothesis.  The critial value of the null hypothesis was calculated using a confidence level of 95% and a degree of freedom of 23.</p>
-<p>I chose the t-score because the provided dataset contained fewer than 30 records and the population standard deviation was unknown.</p>
+<h3 id="Statistical-Test">Statistical Test<a class="anchor-link" href="#Statistical-Test">&#182;</a></h3><p>A t-score was calculated to test my alternate hypothesis against the null hypothesis.  The critical value of the null hypothesis was calculated to use as a baseline for comparison (using a confidence level of 95% and a degree of freedom of 23).</p>
+<p>I chose the <em>t-score for dependent means (paired t-test)</em> because the provided dataset contained fewer than 30 records, the data values were paired measurements, and the population standard deviation was unknown.  Both sets of values were also (mostly) normally distributed.</p>
+<ul>
+<li>Standard deviation of differences between 'Congruent' and 'Incongruent' datasets: 4.8</li>
+<li>Mean of differences between 'Congruent' and 'Incongruent' datasets: 7.97</li>
+</ul>
+<p>I calculated the t-score by first finding the standard deviation of the difference between 'Congruent' and 'Incongruent' results.  Then, I calculated the mean of the difference between both data sets.  Finally, I created a script to replicate the formula to calculate the t-stat score using those values.</p>
+<h4 id="Formula-for-creation-of-t-score">Formula for creation of t-score<a class="anchor-link" href="#Formula-for-creation-of-t-score">&#182;</a></h4><ul>
+<li>t_stat = mean_dif/(std_dif/math.sqrt(df.shape[0]))</li>
+</ul>
 <h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><ul>
 <li>Critical Value of null hypothesis - 1.71</li>
 <li>t-score value of alternate hypothesis - 8.02</li>
 </ul>
-<h4 id="Interpretation">Interpretation<a class="anchor-link" href="#Interpretation">&#182;</a></h4><p>The t-score of 8.02 is significantly higher than the critical value of the null hypothesis, which allows for the rejection of the null hypothesis.</p>
+<h4 id="Interpretation">Interpretation<a class="anchor-link" href="#Interpretation">&#182;</a></h4><p>The t-score of 8.02 is significantly higher than the 1.71 critical value of the null hypothesis.  This difference allows for the <em>rejection of the null hypothesis</em>, as the results clearly align with my initial hypothesis that 'Incongruent' times would be longer on average than 'Congruent' baselines.</p>
+<p>It makes both hypothetical and logical sense that interpreting unnatural relationships would require the human brain to take more time to process the information.  Thus, the Stroop test is clearly an effective measurement of how quickly an individual can process information.</p>
+<p>There is a well-defined relationship between the 'Congruent' and 'Incongruent' results, as 'Incongruent' tests repeatedly took longer.  Also, the relative word condition clearly has as influence on the test, as 'Incongruent' values were interpreted more slowly and with greater variance (as represented by the slightly skewed distribution of 'Incongruent' data highlighted in the histogram).</p>
+<p>In conclusion, the results absolutely matched my expectations coming in to the exercise.  There was a tangible difference in data sets and a pattern emerged that showed the 'Incongruent' tests would take significantly longer on average than 'Congruent' testing.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -14312,7 +14323,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -14333,7 +14344,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">josep</span><span class="se">\\</span><span class="s1">Downloads</span><span class="se">\\</span><span class="s1">stroopdata.csv&#39;</span><span class="p">)</span>
@@ -14383,7 +14394,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -14402,7 +14413,7 @@ standard deviation for Incongruent 4.696
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
 
 
@@ -14490,7 +14501,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">])</span>
@@ -14509,7 +14520,7 @@ standard deviation for Incongruent 4.696
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
@@ -14549,7 +14560,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">])</span>
@@ -14568,7 +14579,7 @@ standard deviation for Incongruent 4.696
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
@@ -14608,7 +14619,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,)</span>
@@ -14631,7 +14642,7 @@ standard deviation for Incongruent 4.696
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 
 
 
@@ -14671,7 +14682,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># t-critical value for a 95% confidence level and 23 degree of freedom</span>
@@ -14692,7 +14703,7 @@ standard deviation for Incongruent 4.696
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 
 
 
@@ -14710,7 +14721,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find the standard deviation of the difference between congruent and incongruent data</span>
@@ -14748,7 +14759,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute mean of differences</span>
@@ -14786,7 +14797,7 @@ standard deviation for Incongruent 4.696
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">]</span>
@@ -14837,7 +14848,7 @@ Name: dif, dtype: float64
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Formula for creation of t-score</span>
@@ -14853,7 +14864,7 @@ Name: dif, dtype: float64
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t_stat</span>
@@ -14872,7 +14883,7 @@ Name: dif, dtype: float64
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 
 
 
@@ -14898,6 +14909,8 @@ Name: dif, dtype: float64
 <li><a href="https://github.com/Shreyas3108/Test-a-perceptual-phenomenon">https://github.com/Shreyas3108/Test-a-perceptual-phenomenon</a></li>
 <li><a href="https://stackoverflow.com/questions/9031783/hide-all-warnings-in-ipython">https://stackoverflow.com/questions/9031783/hide-all-warnings-in-ipython</a></li>
 <li><a href="https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/t-score-vs-z-score/">https://www.statisticshowto.com/probability-and-statistics/hypothesis-testing/t-score-vs-z-score/</a></li>
+<li><a href="http://www.psychology.emory.edu/clinical/bliwise/Tutorials/TOM/meanstests/assump.htm">http://www.psychology.emory.edu/clinical/bliwise/Tutorials/TOM/meanstests/assump.htm</a></li>
+<li><a href="https://www.jmp.com/en_nl/statistics-knowledge-portal/t-test/paired-t-test.html">https://www.jmp.com/en_nl/statistics-knowledge-portal/t-test/paired-t-test.html</a></li>
 </ul>
 
 </div>
