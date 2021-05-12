@@ -10,7 +10,7 @@ In each case, we measure the time it takes to name the ink colors in equally-siz
 
 ### Purpose of Task
 
-Investigate a classic phenomenon from experimental psychology called the Stroop Effect using inferential statistics.  Outline the statistal investigation from start to finish and report findings along the way.  Provide justifications for reasonings that support findings. 
+Investigate a classic phenomenon from experimental psychology called the Stroop Effect using inferential statistics.  Outline the statistical investigation from start to finish and report findings along the way.  Provide justifications for reasonings that support findings. 
 
 ### Variable Identification
 
