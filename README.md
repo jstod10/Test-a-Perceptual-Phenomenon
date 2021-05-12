@@ -33,7 +33,7 @@ Investigate a classic phenomenon from experimental psychology called the Stroop 
 
 A t-score was calculated in order to test my alternate hypothesis against the null hypothesis.  The critial value of the null hypothesis was calculated using a confidence level of 95% and a degree of freedom of 23.  
 
-I chose the t-score because the provided dataset contained fewer than 30 records and the population standard deviation was unkown.
+I chose the t-score because the provided dataset contained fewer than 30 records and the population standard deviation was unknown.
 
 ### Results
 
